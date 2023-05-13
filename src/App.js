@@ -1,12 +1,11 @@
 import Home from "./Home";
-import Branches from "./Branches";
+import BranchesPage from "./BranchesPage";
 import "./styles.css";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getRepo, getBranches } from "./api";
+
 
 export default function App() {
-  const nav = useNavigate();
   const [repoData, setRepoData] = useState({
     name: "",
     desc: "",
@@ -16,8 +15,6 @@ export default function App() {
     owner: "",
     name: ""
   });
-
-  // console.log({ userSearch });
 
   // useEffect(() => {
   //   getBranches(userSearch.owner, userSearch.name).then((data) =>
@@ -29,13 +26,11 @@ export default function App() {
   //   // nav(`/branches/${repoData.name}`)
   // }, [userSearch]);
 
-  // console.log({ repoData });
-
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home setUserSearch={setUserSearch} />} />
-        <Route path="/branches/:owner/:name" element={<Branches />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/branches/:owner/:name" element={<BranchesPage />} />
       </Routes>
     </div>
   );
