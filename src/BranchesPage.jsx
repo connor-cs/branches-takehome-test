@@ -16,11 +16,30 @@ export default function BranchesPage() {
     branches: []
   });
 
+  useEffect(() => {
+    const getData = async () => {
+      const br = await getBranches(params.owner, params.name)
+      const repo = await getRepo(params.owner, params.name)
+
+      setRepoData({
+        ...repoData,
+        name: repo.name,
+        desc: repo.description,
+        watchers: repo.watchers,
+        branches: br
+      })
+    }
+
+    getData()
+
+  }, []);
+
   // useEffect(() => {
+
   //     getBranches(params.owner, params.name)
   //     // .then(data=>console.log(data))
   //     .then((data) =>setRepoData({ ...repoData, branches: data }));
-      
+
   //     getRepo(params.owner, params.name).then((data) =>
   //       setRepoData({
   //         ...repoData,
@@ -30,22 +49,6 @@ export default function BranchesPage() {
   //       })
   //     );
   // }, []);
-  
-  useEffect(() => {
-
-      getBranches(params.owner, params.name)
-      // .then(data=>console.log(data))
-      .then((data) =>setRepoData({ ...repoData, branches: data }));
-      
-      getRepo(params.owner, params.name).then((data) =>
-        setRepoData({
-          ...repoData,
-          name: data.name,
-          desc: data.description,
-          watchers: data.watchers
-        })
-      );
-  }, []);
 
   console.log({ repoData });
   console.log(repoData.branches)
@@ -53,7 +56,7 @@ export default function BranchesPage() {
   return (
     <div className="main">
       <div className="header">
-        <button onClick={()=>nav('/')}>
+        <button onClick={() => nav('/')}>
           <AiOutlineArrowLeft />
         </button>
         <div className="description">
@@ -69,8 +72,8 @@ export default function BranchesPage() {
         <div className="in-progress column">
           <p>In progress</p>
           <div className="in-progress-container">
-{/*             
-            {repoData.branches.length ? repoData.branches.map((_, i) => <p>{i}</p>) : null} */}
+                        
+            {repoData.branches.length ? repoData.branches.map((_, i) => <p>{i}</p>) : null}
           </div>
         </div>
         <div className="review column">
