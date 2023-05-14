@@ -9,7 +9,7 @@
 body {
   height: 100%;
   background: #151515;
-  color: #B0B0B0;
+  color: #b8b8b8;
   align-items: center;
   /* display: flex;
   justify-content: center;
@@ -41,11 +41,15 @@ body {
   cursor: pointer;
 }
 
+.error {
+  color: red;
+}
+
 .back-button {
   cursor: pointer;
   background: #151515;
   border: none;
-  color: #B0B0B0;
+  color: #b8b8b8;
 }
 
 .header {
@@ -58,6 +62,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+input {
+  color: #b8b8b8;
+  background-color: #151515;
+  padding: 10px;
+  width: 400px;
+  border: none;
+  border-bottom: 2px solid #b8b8b8;
+}
+
+input:focus{
+  outline: none;
 }
 
 .description {

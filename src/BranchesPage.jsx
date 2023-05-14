@@ -2,20 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getRepo, getBranches } from "./api";
 import { AiOutlineArrowLeft, AiOutlineStar } from "react-icons/ai";
-import { MdKeyboardArrowRight } from "react-icons/md";
 import Branch from "./Branch";
 
 //how to organize data into changeable columns?
 //by default, items have index of 0
-//increment when moving rightward
+//then increment/decrement
 
 export default function BranchesPage() {
   const params = useParams();
   const nav = useNavigate();
-  // console.log({ params });
   const [repoData, setRepoData] = useState({
     name: "",
-    owner: "",
+    owner: params.owner,
     desc: "",
     watchers: "",
     branches: [],
@@ -45,7 +43,7 @@ export default function BranchesPage() {
 
   // console.log({ repoData });
   // console.log(repoData.branches);
-  console.log({branches})
+  // console.log({branches})
 
   return (
     <div className="main">
@@ -64,12 +62,12 @@ export default function BranchesPage() {
       </div>
       <div className="branches-container column">
         <div className="in-progress column">
-          <p>In progress </p>
+          <p>In progress ({branches.filter(branch=>branch.index===0).length})</p>
           <div className="in-progress-container">
             {repoData.branches.length
               ? repoData.branches
                   .filter((branch) => branch.index === 0)
-                  .map((branch, i) => (
+                  .map((branch) => (
                     <Branch
                       name={branch.name}
                       handleMoveColumn={handleMoveColumn}
@@ -79,7 +77,7 @@ export default function BranchesPage() {
           </div>
         </div>
         <div className="review column">
-          <p>Review</p>
+          <p>Review ({branches.filter(branch=>branch.index===1).length})</p>
           {branches
             .filter((branch) => branch.index === 1)
             .map((branch) => (
@@ -87,7 +85,7 @@ export default function BranchesPage() {
             ))}
         </div>
         <div className="merge column">
-          <p>Ready to Merge</p>
+          <p>Ready to Merge ({branches.filter(branch=>branch.index===2).length})</p>
           {branches
             .filter((branch) => branch.index === 2)
             .map((branch) => (
@@ -109,4 +107,5 @@ export default function BranchesPage() {
     setBranches([filteredBranches, movedBranch].flat());
   }
 
+  
 }
