@@ -1,22 +1,35 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 
 body {
   height: 100%;
   background: #151515;
   color: #B0B0B0;
+  align-items: center;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 
 
 .branch {
   padding: 10px;
-  border: 2px solid blue;
   border-radius: 5px;
-  background: #99999941;
+  display: flex;
+  justify-content: space-between;
+  background: rgba(34,34,34,255);
   margin: 10px;
   text-align: center;
+  width: 200px;
+}
+
+.branch:hover{
+  background: #99999941;
 }
 
 .branches-container {
@@ -28,9 +41,22 @@ body {
   cursor: pointer;
 }
 
+.back-button {
+  cursor: pointer;
+  background: #151515;
+  border: none;
+  color: #B0B0B0;
+}
+
 .header {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+
+.home > form {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -40,6 +66,14 @@ body {
 }
 
 .column {
-  border: 2px solid black;
   padding: 20px;
+}
+
+.submit-button {
+  background: #99999941;
+  border: none;
+  color: #B0B0B0;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: 10px;
 }

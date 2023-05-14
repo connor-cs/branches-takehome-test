@@ -43,22 +43,6 @@ export default function BranchesPage() {
     getData();
   }, []);
 
-  // useEffect(() => {
-
-  //     getBranches(params.owner, params.name)
-  //     // .then(data=>console.log(data))
-  //     .then((data) =>setRepoData({ ...repoData, branches: data }));
-
-  //     getRepo(params.owner, params.name).then((data) =>
-  //       setRepoData({
-  //         ...repoData,
-  //         name: data.name,
-  //         desc: data.description,
-  //         watchers: data.watchers
-  //       })
-  //     );
-  // }, []);
-
   // console.log({ repoData });
   // console.log(repoData.branches);
   console.log({branches})
@@ -66,8 +50,8 @@ export default function BranchesPage() {
   return (
     <div className="main">
       <div className="header">
-        <button className="button" onClick={() => nav("/")}>
-          <AiOutlineArrowLeft />
+        <button className="back-button" onClick={() => nav("/")}>
+          <AiOutlineArrowLeft size={30}/>
         </button>
         <div className="description">
           {repoData.name ? <h1>{repoData.name}</h1> : <div>Loading...</div>}
@@ -95,7 +79,7 @@ export default function BranchesPage() {
           </div>
         </div>
         <div className="review column">
-          Review
+          <p>Review</p>
           {branches
             .filter((branch) => branch.index === 1)
             .map((branch) => (
@@ -103,7 +87,7 @@ export default function BranchesPage() {
             ))}
         </div>
         <div className="merge column">
-          Ready to Merge
+          <p>Ready to Merge</p>
           {branches
             .filter((branch) => branch.index === 2)
             .map((branch) => (
@@ -115,8 +99,7 @@ export default function BranchesPage() {
   );
 
   function handleMoveColumn(direction, name) {
-    console.log({branches})
-    //get all branches except the one being moved
+    //get all branches except the one being moved to avoid duplicates
     const filteredBranches = [...branches].filter(branch=>branch.name!=name)
     const movedBranch = [...branches].find((branch) => branch.name === name);
     

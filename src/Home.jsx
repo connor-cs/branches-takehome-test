@@ -10,7 +10,7 @@ export default function Home() {
   const [url, setUrl] = useState("");
 
   return (
-    <div>
+    <div className='home'>
       <h1>Start by pasting the repository URL</h1>
       <form>
         <input
@@ -18,7 +18,7 @@ export default function Home() {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
         />
-        <button type="submit" onClick={(e) => handleSubmit(e)}>
+        <button className="button submit-button" type="submit" onClick={(e) => handleSubmit(e)}>
           Submit
         </button>
       </form>
