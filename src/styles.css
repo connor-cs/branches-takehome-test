@@ -16,6 +16,12 @@ body {
   align-items: center; */
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .branch {
   padding: 10px;
@@ -25,7 +31,7 @@ body {
   background: rgba(34,34,34,255);
   margin: 10px;
   text-align: center;
-  width: 200px;
+  width: 100%
 }
 
 .branch:hover{
@@ -34,7 +40,6 @@ body {
 
 .branches-container {
   display: flex;
-  justify-content: space-between;
 }
 
 .button {
@@ -84,8 +89,29 @@ input:focus{
 
 .column {
   padding: 20px;
+  flex: 1;
 }
 
+/* .in-progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.merge {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
 .submit-button {
   background: #99999941;
   border: none;
@@ -93,4 +119,8 @@ input:focus{
   border-radius: 5px;
   padding: 10px;
   margin-left: 10px;
+}
+
+.submit-button:hover {
+  background: #ecebeb41;
 }

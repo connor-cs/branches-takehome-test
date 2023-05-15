@@ -63,12 +63,13 @@ export default function BranchesPage() {
       <div className="branches-container column">
         <div className="in-progress column">
           <p>In progress ({branches.filter(branch=>branch.index===0).length})</p>
-          <div className="in-progress-container">
+          <div className="container">
             {repoData.branches.length
               ? repoData.branches
                   .filter((branch) => branch.index === 0)
                   .map((branch) => (
                     <Branch
+                    key={branch.name}
                       name={branch.name}
                       handleMoveColumn={handleMoveColumn}
                     />
@@ -78,19 +79,23 @@ export default function BranchesPage() {
         </div>
         <div className="review column">
           <p>Review ({branches.filter(branch=>branch.index===1).length})</p>
+          <div className="container">
           {branches
             .filter((branch) => branch.index === 1)
             .map((branch) => (
-              <Branch name={branch.name} handleMoveColumn={handleMoveColumn} />
+              <Branch key={branch.name} name={branch.name} handleMoveColumn={handleMoveColumn} />
             ))}
+            </div>
         </div>
         <div className="merge column">
           <p>Ready to Merge ({branches.filter(branch=>branch.index===2).length})</p>
+          <div className="container">
           {branches
             .filter((branch) => branch.index === 2)
             .map((branch) => (
-              <Branch name={branch.name} handleMoveColumn={handleMoveColumn} />
+              <Branch key={branch.name} name={branch.name} handleMoveColumn={handleMoveColumn} />
             ))}
+            </div>
         </div>
       </div>
     </div>

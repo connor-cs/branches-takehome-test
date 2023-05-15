@@ -6,6 +6,7 @@ export default function Home() {
   const navigate = useNavigate();
   const [url, setUrl] = useState("");
   const [errors, setErrors] = useState(false);
+  const [dark, setDark] = useState(true)
 
   return (
     <div className="home">
